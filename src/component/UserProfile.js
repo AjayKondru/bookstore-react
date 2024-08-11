@@ -8,7 +8,7 @@ const UserProfile = () => {
     const [user, setUser] = useState({});
 
     useEffect(() => {
-        axios.get('/api/user/profile', {
+        axios.get('/api/auth/updateProfile', {
             headers: { Authorization: `Bearer ${auth?.token}` }
         }).then(response => {
             setUser(response.data);
@@ -21,7 +21,7 @@ const UserProfile = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.put('/api/user/profile', user, {
+        axios.put('/api/auth/getUser', user, {
             headers: { Authorization: `Bearer ${auth?.token}` }
         }).then(response => {
             alert('Profile updated successfully');

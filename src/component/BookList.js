@@ -8,7 +8,7 @@ const BookList = () => {
     const { addToCart } = useContext(CartContext);
 
     useEffect(() => {
-        axios.get('/api/books').then(response => {
+        axios.get('/api/books/fetchAll').then(response => {
             setBooks(response.data);
         });
     }, []);
