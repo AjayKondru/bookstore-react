@@ -23,8 +23,7 @@ export const OrderProvider = ({ children }) => {
         return axios.post('/api/orders/checkout', null, {
             headers: { Authorization: `Bearer ${auth.token}` }
         }).then(response => {
-            setOrders([...orders, response.data]);
-            return response.data;
+            alert(response.data);
         });
     };
 

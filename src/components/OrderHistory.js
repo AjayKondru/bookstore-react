@@ -19,14 +19,7 @@ const OrderHistory = () => {
                                 <strong>Total Amount:</strong> ${order.totalAmount.toFixed(2)}
                             </div>
                             <div>
-                                <strong>Items:</strong>
-                                <ul>
-                                    {order.items.map(item => (
-                                        <li key={item.id}>
-                                            {item.book.title} - {item.quantity} pcs at ${item.price.toFixed(2)} each
-                                        </li>
-                                    ))}
-                                </ul>
+                                <strong>Order Status:</strong> {order.status}
                             </div>
                         </li>
                     ))}

@@ -2,10 +2,12 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
 import { AuthContext } from '../context/AuthContext';
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
     const [user, setUser] = useState({ username: '', password: '' });
     const { login } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         setUser({ ...user, [e.target.name]: e.target.value });
@@ -16,6 +18,9 @@ const Login = () => {
         axios.post('/api/auth/login', user)
             .then(response => {
                 login(response.data);
+                           localStorage.setItem('token',response.data.token);
+                axios.defaults.headers.get['Authorization'] = 'Bearer ' + response.data.token;
+                navigate("/booklist"); 
             })
             .catch(error => {
                 console.error('There was an error!', error);

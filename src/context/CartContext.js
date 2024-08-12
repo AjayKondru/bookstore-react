@@ -20,7 +20,7 @@ export const CartProvider = ({ children }) => {
     }, [auth]);
 
     const addToCart = (bookId, quantity) => {
-        axios.post('/api/cart/add', { bookId, quantity }, {
+        axios.get('/api/cart/add', {params:{ bookId:bookId, quantity:quantity} }, {
             headers: { Authorization: `Bearer ${auth.token}` }
         }).then(response => {
             setCartItems([...cartItems, response.data]);

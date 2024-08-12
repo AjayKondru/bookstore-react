@@ -2,19 +2,26 @@
 import React, { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
 import { OrderContext } from '../context/OrderContext';
+import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
     const { cartItems, removeFromCart, clearCart } = useContext(CartContext);
     const { checkout } = useContext(OrderContext);
+    const navigate = useNavigate();
 
     const handleCheckout = () => {
         checkout().then(() => {
             clearCart();
+
             alert('Order placed successfully!');
         }).catch(err => {
             console.error('Checkout failed', err);
             alert('Checkout failed. Please try again.');
         });
+    };
+    const handleButtonClick = () => {
+   
+        navigate('/orders');
     };
 
     return (
@@ -30,6 +37,7 @@ const Cart = () => {
             </ul>
             <button onClick={handleCheckout}>Checkout</button>
             <button onClick={clearCart}>Clear Cart</button>
+            <button onClick={handleButtonClick}>View Order</button>
         </div>
     );
 };

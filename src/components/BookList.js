@@ -1,20 +1,27 @@
-// src/components/BookList.js
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { CartContext } from '../context/CartContext';
+import { useNavigate } from "react-router-dom";
 
 const BookList = () => {
     const [books, setBooks] = useState([]);
     const { addToCart } = useContext(CartContext);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get('/api/books/fetchAll').then(response => {
+        const token = localStorage.getItem('token');
+        axios.get('/api/books/fetchAll',
+           { headers: { Authorization: `Bearer ${token}` } }).then(response => {
             setBooks(response.data);
         });
     }, []);
 
     const handleAddToCart = (bookId) => {
-        addToCart(bookId, 1); // Add one book to the cart
+        addToCart(bookId, 1); 
+    };
+    const handleButtonClick = () => {
+   
+        navigate('/cart');
     };
 
     return (
@@ -28,7 +35,12 @@ const BookList = () => {
                     </li>
                 ))}
             </ul>
+            <div>
+             <button onClick={  handleButtonClick }>Go to Cart</button> 
         </div>
+        </div>
+       
+        
     );
 };
 
