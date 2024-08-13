@@ -23,6 +23,10 @@ const BookList = () => {
    
         navigate('/cart');
     };
+    const handleButtonClick1 = () => {
+   
+        navigate('/createbook');
+    };
 
     return (
         <div>
@@ -35,6 +39,9 @@ const BookList = () => {
                     </li>
                 ))}
             </ul>
+            <div>
+             <button onClick={  handleButtonClick1 }>Add Book</button> 
+        </div>
             <div>
              <button onClick={  handleButtonClick }>Go to Cart</button> 
         </div>
