@@ -1,9 +1,15 @@
 // src/components/OrderHistory.js
 import React, { useContext } from 'react';
 import { OrderContext } from '../context/OrderContext';
+import { useNavigate } from 'react-router-dom';
 
 const OrderHistory = () => {
+    const navigate = useNavigate();
     const { orders } = useContext(OrderContext);
+    const handleButtonClick1 = () => {
+   
+        navigate('/booklist');
+    };
 
     return (
         <div>
@@ -27,6 +33,7 @@ const OrderHistory = () => {
             ) : (
                 <p>No orders found.</p>
             )}
+            <button onClick={handleButtonClick1}>Purchase Books</button>
         </div>
     );
 };

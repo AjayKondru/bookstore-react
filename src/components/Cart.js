@@ -23,6 +23,10 @@ const Cart = () => {
    
         navigate('/orders');
     };
+    const handleButtonClick1 = () => {
+   
+        navigate('/booklist');
+    };
 
     return (
         <div>
@@ -38,6 +42,7 @@ const Cart = () => {
             <button onClick={handleCheckout}>Checkout</button>
             <button onClick={clearCart}>Clear Cart</button>
             <button onClick={handleButtonClick}>View Order</button>
+            <button onClick={handleButtonClick1}>Add Books</button>
         </div>
     );
 };
