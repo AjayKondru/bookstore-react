@@ -29,7 +29,7 @@ export const CartProvider = ({ children }) => {
 
     const removeFromCart = (cartItemId) => {
         axios.delete(`/api/cart/remove/${cartItemId}`, {
-            headers: { Authorization: `Bearer ${auth.token}` }
+            headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
         }).then(() => {
             setCartItems(cartItems.filter(item => item.id !== cartItemId));
         });

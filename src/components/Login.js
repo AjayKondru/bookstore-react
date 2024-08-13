@@ -23,6 +23,7 @@ const Login = () => {
                 navigate("/booklist"); 
             })
             .catch(error => {
+                alert('Invalid Credentials');
                 console.error('There was an error!', error);
             });
     };

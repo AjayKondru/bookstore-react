@@ -11,6 +11,12 @@ const OrderHistory = () => {
         navigate('/booklist');
     };
 
+    const signout = () => {   
+      localStorage.removeItem('token');
+      navigate('/login');
+    };
+   
+
     return (
         <div>
             <h2>Your Order History</h2>
@@ -34,6 +40,7 @@ const OrderHistory = () => {
                 <p>No orders found.</p>
             )}
             <button onClick={handleButtonClick1}>Purchase Books</button>
+            <button onClick={signout}>Sign Out</button>
         </div>
     );
 };

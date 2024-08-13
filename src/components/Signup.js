@@ -18,6 +18,7 @@ const Signup = () => {
                 navigate("/login");  
             })
             .catch(error => {
+                alert('Signup Failed');
                 console.error('There was an error!', error);
             });
     };
