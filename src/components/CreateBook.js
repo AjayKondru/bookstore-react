@@ -20,7 +20,10 @@ const CreateBook = () => {
             setIsAdmin(roles.includes('ADMIN'));
         }
     }, []);
-
+    const handleButtonClick = () => {
+   
+        navigate('/booklist');
+    };
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -42,6 +45,7 @@ const CreateBook = () => {
         } catch (error) {
             console.error('Error creating book:', error);
             alert('Failed to create the book.');
+            navigate('/booklist');
         }
     };
 
@@ -87,7 +91,10 @@ const CreateBook = () => {
                     <button type="submit">Create Book</button>
                 </form>
             ) : (
-                <p>You do not have permission to access this page.</p>
+                <p>You do not have permission to access this page
+                
+                <button onClick={  handleButtonClick }>Go to Book List</button> 
+                </p>
             )}
         </div>
     );
